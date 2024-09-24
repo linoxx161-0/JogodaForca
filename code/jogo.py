@@ -1,4 +1,5 @@
 import random
+from os import system, name 
 
 #Criando a função do jogo
 def game():
@@ -20,27 +21,23 @@ def game():
     #Definir o número máximo de chances:
     chances = 8
 
-#Pedir ao jogador que advinhe uma letra
-letra = input("Digite uma letra: ")
-
-#Verificar se a letra adivinhada está na palavra:
-for letra in palavra:
     while chances > 0:
-    print(" ".join(letras_adivinhadas))
-    print("\nChances restantes:", chances)
-    print("Letras erradas:", " ".join(letras_erradas))
 
-    #Tentativa
-    tentativa = input("\nDigite uma letra: ").lower()
+        print(" ".join(letras_adivinhadas))
+        print("\nChances restantes:", chances)
+        print("Letras erradas:", " ".join(letras_erradas))
 
-    #Condicional
-    if tentativa in palavra:
-        index = 0
+        #Tentativa
+        tentativa = input("\nDigite uma letra: ").lower()
 
-        for letra in palavra:
-            if tentativa == letra:
-                letras_adivinhadas[index] = letra
-            index +=1
+        #Condicional
+        if tentativa in palavra:
+            index = 0
+
+            for letra in palavra:
+                if tentativa == letra:
+                    letras_adivinhadas[index] = letra
+                index +=1
         else:
             chances -= 1
             letras_erradas.append(tentativa)
@@ -50,4 +47,10 @@ for letra in palavra:
             break
     if "_" in letras_adivinhadas:
         print("\nVocê perdeu! A palavra era: ", palavra )
+
+        # Bloco main
+if __name__ == "__main__":
+    game()
+    print("\nParabéns. Você está aprendendo programação em Python com a DSA. :)\n")
+
 
